@@ -132,6 +132,8 @@ function deeplab(options)
   -- fuse data_ms , pool1_ms , pool2_ms , pool3_ms, pool4_ms, fc8_$Exp
   local output = nn.CAddTable()({data_ms, pool1_ms, pool2_ms, pool3_ms, pool4_ms, fc8_})
 
+  -- Either the below 3 layers can be used to scale to 8 times back to original size
+  -- or use SpatialUpSamplingNearest as done here
   -- output = UpConvolution(noClasses, noClasses, 2, 2, 2, 2)(output)
   -- output = UpConvolution(noClasses, noClasses, 2, 2, 2, 2)(output)
   -- output = UpConvolution(noClasses, noClasses, 2, 2, 2, 2)(output)
